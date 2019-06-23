@@ -1,161 +1,142 @@
-const API_URL = 'https://api.github.com/repos/binary-studio-academy/stage-2-es6-for-everyone/contents/resources/api/';
+class Events {
 
-function callApi(endpoind, method) {
-  const url = API_URL + endpoind;
-  const options = {
-    method
-  };
+    #listeners = {};
 
-  return fetch(url, options)
-    .then(response =>
-      response.ok ? response.json() : Promise.reject(Error('Failed to load'))
-    )
-    .catch(error => {
-      throw error;
-    });
+    on(event, fn){
+        if (!this.#listeners[event]) {
+            this.#listeners[event] = [];
+        }
+        this.#listeners[event].push(fn);
+    }
+
+    trigger(event){
+        this.#listeners[event].forEach(fn => fn());
+    }
+
 }
 
-class FighterService {
-    // async getFighters() {
-    //   try {
-    //     const endpoint = 'fighters.json';
-    //     const apiResult = await callApi(endpoint, 'GET');
-  
-    //     return JSON.parse(atob(apiResult.content));
-    //   } catch (error) {
-    //     throw error;
-    //   }
-    // }
-  
-    async getFighterDetails(_id) {
-      // implement this method
-      // endpoint - `details/fighter/${_id}.json`;
-      try {
-        const endpoint = `details/fighter/${_id}.json`;
-        const apiResult = await callApi(endpoint, 'GET');
-  
-        return JSON.parse(atob(apiResult.content));
-      } catch (error) {
-        throw error;
-      }
-    }
-  }
+class CollectionService {
 
-  class View {
-    element;
-  
-    createElement({ tagName, className = '', attributes = {} }) {
-      const element = document.createElement(tagName);
-      element.classList.add(className);
-      Object.keys(attributes).forEach(key => element.setAttribute(key, attributes[key]));
-  
-      return element;
-    }
-  }
+    API_URL = 'https://jsonplaceholder.typicode.com/photos';
 
-  class Fighter {
-    attack;
-    defense;
-    health;
-    name;
-    _source;
-    _id;
-  
-    constructor(fighterDetails){
-    ({attack:this.attack, defense:this.defense, health:this.health, name:this.name, _source:this._source, _id:this._id} = fighterDetails);
-    }
-  
-    getHitPower(){
-      let criticalHitChance = this.getRandomArbitrary(1,2);
-      let power = this.attack * criticalHitChance;
-      return power;
-    }
-  
-    getBlockPower(){
-      let dodgeChance = this.getRandomArbitrary(1,2);
-      let power = this.defense * dodgeChance;
-      return power;
-    }
-  
-    getRandomArbitrary(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-  }
+    callApi(method) {
 
-  class FighterView extends View {
-    constructor(fighter, handleClick) {
-      super();
-  
-      this.createFighter(fighter, handleClick);
-    }
-  
-    createFighter(fighter, handleClick) {
-      const { name, source } = fighter;
-      const nameElement = this.createName(name);
-      const imageElement = this.createImage(source);
-      const checkElement = this.createCheckbox();
-  
-      this.element = this.createElement({ tagName: 'div', className: 'fighter' });
-      this.element.append(imageElement, nameElement, checkElement);
-      this.element.addEventListener('click', event => handleClick(event, fighter), false);
-    }
-  
-    createName(name) {
-      const nameElement = this.createElement({ tagName: 'span', className: 'name' });
-      nameElement.innerText = name;
-  
-      return nameElement;
-    }
-  
-    createImage(source) {
-      const attributes = { src: source };
-      const imgElement = this.createElement({
-        tagName: 'img',
-        className: 'fighter-image',
-        attributes
-      });
-  
-      return imgElement;
-    }
-  
-    createCheckbox(){
-      const attributes = { type: 'checkbox' };
-      const checkElement = this.createElement({ tagName: 'input', className: 'fighter-check', attributes });
-  
-      return checkElement;
-    }
-  }
+    const options = {
+        method,
+    };
 
-  class FightersView extends View {
-    constructor(fighters) {
-      super();
-      
-      this.handleClick = this.handleFighterClick.bind(this);
-      this.createFighters(fighters);
+    return fetch(/*url*/this.API_URL, options)
+        .then(response =>
+            response.ok ? response.json() : Promise.reject(Error('Failed to load'))
+        )
+        .catch(error => {
+            throw error;
+        });
     }
-  
-    fightersDetailsMap = new Map();
-  
-    createFighters(fighters) {
-      const fighterElements = fighters.map(fighter => {
-        const fighterView = new FighterView(fighter, this.handleClick);
-        return fighterView.element;
-      });
-  
-      this.element = this.createElement({ tagName: 'div', className: 'fighters' });
-      this.element.append(...fighterElements);
+
+    async getCollection() {
+
+        try {
+
+            /*const apiResult =*/return await this.callApi('GET');
+
+        } catch (error) {
+            throw error;
+        }
     }
-  
-    async handleFighterClick(event, fighter) {
-      const fighterDetail = await fighterService.getFighterDetails(fighter._id);
-      this.fightersDetailsMap.set(fighter._id, fighterDetail);
-      let oneFighter = new Fighter(this.fightersDetailsMap.get(fighter._id));//delete
-  
-      console.log(/* this.fightersDetailsMap.get(fighter._id) */oneFighter);//delete
-      console.log('clicked')
-      
-      // get from map or load info and add to fightersMap
-      // show modal with fighter info
-      // allow to edit health and power in this modal
+}
+
+
+class Collection extends Events {
+
+    #list = [
+        {
+        "title": "Easily Customised",
+        "thumbnailUrl": "img/Layer 48.webp"
+        },
+        {
+        "title": "Easily Customised",
+        "thumbnailUrl": "img/Layer 48.webp"
+        },
+        {
+        "title": "Easily Customised",
+        "thumbnailUrl": "img/Layer 48.webp"
+        },
+        {
+        "title": "Easily Customised",
+        "thumbnailUrl": "img/Layer 48.webp"
+        },
+        {
+        "title": "Easily Customised",
+        "thumbnailUrl": "img/Layer 48.webp"
+        },
+        {
+        "title": "Easily Customised",
+        "thumbnailUrl": "img/Layer 48.webp"
+        },
+    ];
+
+
+    add(list) {
+        this.#list = list;
+        this.trigger('change');
     }
-  }
+
+
+    get list(){
+        return this.#list.slice();
+    }
+}
+
+class Features {
+
+    static templateFeatures = document.querySelector('#templateFeatures').content;
+
+    #model = new Collection()
+
+    // root element of template
+    #root = null
+
+    constructor() {
+
+        this._eventsAssign()
+            ._render();
+    }
+
+    _eventsAssign() {
+
+        document.querySelector('#btnFndOutMore').addEventListener('click', this.addItems.bind(this));
+
+        this.#model.on('change', this._render.bind(this));
+        return this;
+    }
+
+    _render() {
+        document.querySelector('#features').innerHTML = '';
+
+        this.#model.list.forEach((el, i) => {
+            const template = Features.templateFeatures.cloneNode(true);
+            template.querySelector('._insImg').src = el["thumbnailUrl"];
+            template.querySelector('._insTitle').innerHTML = el["title"];
+            document.querySelector('#features').appendChild(template);
+        });
+    }
+
+    async addItems(){
+
+        const collectionService  = new CollectionService();
+
+        const tmpList =  await collectionService.getCollection();
+
+        const listRandom = [];
+        for (let index = 0; index < 5; index++) {
+            listRandom.push(tmpList[Math.floor(Math.random() * tmpList.length)]);
+        }
+
+        this.#model.add(listRandom);
+
+    }
+
+}
+
+new Features();

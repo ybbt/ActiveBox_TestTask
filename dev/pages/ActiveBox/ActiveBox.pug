@@ -27,34 +27,15 @@ html(lang='en')
                     a(href="#").menu_item download
             h1.header_title Your Favorite One Page Multi Purpose Template
             h2.header_subtitle Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit culpa, repudiandae quaerat est nemo possimus cum aliquam!
-            button.button Find Out More
+            button.button#btnFndOutMore Find Out More
         main.main
-            section.features
-                .features-item
-                    img(src="img/Layer 48.webp", alt="").features-item_img
-                    h1.features-item_title Easily Customised
-                    .features-item_descript Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.
-                .features-item
-                    img(src="img/Layer 48.webp", alt="").features-item_img
-                    h1.features-item_title Easily Customised
-                    .features-item_descript Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.
-                .features-item
-                    img(src="img/Layer 48.webp", alt="").features-item_img
-                    h1.features-item_title Easily Customised
-                    .features-item_descript Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.
-                .features-item
-                    img(src="img/Layer 48.webp", alt="").features-item_img
-                    h1.features-item_title Easily Customised
-                    .features-item_descript Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.
-                .features-item
-                    img(src="img/Layer 48.webp", alt="").features-item_img
-                    h1.features-item_title Easily Customised
-                    .features-item_descript Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.
-                .features-item
-                    img(src="img/Layer 48.webp", alt="").features-item_img
-                    h1.features-item_title Easily Customised
-                    .features-item_descript Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.
-                
+            section.features#features
+                template#templateFeatures
+                    .features-item._root
+                        img(src="", alt="").features-item_img._insImg
+                        h1.features-item_title._insTitle Easily Customised
+                        .features-item_descript Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.
+
             section.works
                 .works-item
                     img(src="img/Layer 35.webp", alt="").works-item_img
@@ -164,3 +145,4 @@ html(lang='en')
                         |Made with 
                         span.footer-botom_text__ico-red Y 
                         span.footer-botom_text__white by Kamal Chaneman
+        script(type="text/javascript" src="js/index.js")
