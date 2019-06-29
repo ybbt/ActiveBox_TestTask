@@ -1,0 +1,42 @@
+.main_loyout.main_loyout__clients .slick-dotted.slick-slider,
+.main_loyout .slick-list,
+.main_loyout .slick-track
+.main_loyout .slick-item{
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.slick-track .slick-item.slick-slide {
+        display: flex;
+        // flex-direction: column;
+        // width: 1170px;
+
+}
+// .slick-dotted.slick-slider
+
+.main_loyout .slick-dots{
+    bottom: 30px;
+    left:200px;
+}
+
+.slick-item{
+    &_img{
+        width: calc(100% / 2);
+    }
+
+    &_content{
+        margin: calc(100% / 20) 0 0 85px;
+        width: 500px;
+        color: @colorClientsText;
+    }
+
+    &_text{
+        font-size: 36px;
+        line-height: 42px;
+        margin-bottom: 35px;
+    }
+
+    &_name{
+        font-size: 13px;
+    }
+}

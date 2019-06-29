@@ -5,6 +5,7 @@ include ../../bem/team-item/__team-item.pug
 include ../../bem/works-item/__works-item.pug
 include ../../bem/footer-item/__footer-item.pug
 include ../../bem/social/__social.pug
+include ../../bem/slick-item/__slick-item.pug
 include ../../bem/svg/__svg.pug
 
 doctype html
@@ -19,7 +20,13 @@ html(lang='en')
         link(rel= "stylesheet" href="css/normalize.css")
         link(rel= "stylesheet" href="css/index.css")
 
+        link(rel="stylesheet" type="text/css" href="libs/slick-1.8.1/slick/slick.css")
+        link(rel="stylesheet" type="text/css" href="libs/slick-1.8.1/slick/slick-theme.css")
+
         //- link(href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet")
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cardo:400i&display=swap" rel="stylesheet">
 
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
 
@@ -61,7 +68,9 @@ html(lang='en')
                         //- block
                         +teamItem(teamItems[i])
             section.main_loyout.main_loyout__clients
-                //- має бути слайдер
+                ._container
+                    - for (var i = 0; i< slickItems.length; i++)
+                        +slickItem(slickItems[0])
             section.main_loyout.main_loyout__download
                 h1.main_download-title Are You Ready to Start? Download Now For Free!
                 h2.main_download-subtitle Fusce dapibus, tellus ac cursus commodo
@@ -91,3 +100,6 @@ html(lang='en')
                     span.footer_bottom-text.footer_bottom-text__white by Kamal Chaneman
         +socialSVG("display:none")
         script(type="text/javascript" src="js/index.js")
+        //- script( type="text/javascript" src="libs/slick-1.8.1/slick")
+
+        script(type="text/javascript" src="libs/slick-1.8.1/slick/slick.min.js")

@@ -141,3 +141,15 @@ class Features {
 }
 
 new Features();
+
+$(document).ready(function(){
+    $('._container').slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        adaptiveHeight: true,
+        arrows : false,
+        fade: true,
+    });
+});
