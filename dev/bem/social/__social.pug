@@ -1,0 +1,11 @@
+mixin social(modClass)
+    .social
+        .social_ico-box
+            svg(class="social_ico" viewBox="0 0 16 16" width="25px" height="25px")
+                use(class="social_use" class= (modClass ? ("social_use__" + modClass) : "") xlink:href="#social-ico-in" x="0" y="0")
+        .social_ico-box
+            svg(class="social_ico" viewBox="0 0 16 16" width="25px" height="25px")
+                use(class="social_use" class= (modClass ? ("social_use__" + modClass) : "") xlink:href="#social-ico-in" x="0" y="0")
+        .social_ico-box
+            svg(class="social_ico" viewBox="0 0 16 16" width="25px" height="25px")
+                use(class="social_use" class= (modClass ? ("social_use__" + modClass) : "") xlink:href="#social-ico-in" x="0" y="0")

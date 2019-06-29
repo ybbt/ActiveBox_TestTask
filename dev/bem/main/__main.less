@@ -1,0 +1,66 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &_loyout{
+        width: @widthMain;
+        display: flex;
+        flex-wrap: wrap;
+
+        &__features{
+            // display: flex;            
+            justify-content: space-between;
+            padding-top: 50px;
+            padding-bottom: 125px;
+        }
+
+        &__works{
+            width: 100%;
+            min-width: @widthMain;
+        }
+
+        &__team{
+            margin-top: 100px;
+            justify-content: space-between;
+        }
+
+        &__download{
+            flex-direction: column;
+            align-items: center;
+            margin: 100px 0;
+        }
+    }
+
+    &_loyout-item{
+
+        &__features{
+            width: 300px;
+        }
+
+        &__works{
+            width: calc(100% / 4);
+        }
+
+        &__team{
+            width: 270px;
+        }
+    }
+
+    &_download-title{
+        font-size: 28px;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    &_download-subtitle{
+        font-size: 13px;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+    }
+
+    &_button{
+        width: 280px;
+        height: @btnHeight;
+    }
+}

@@ -1,0 +1,6 @@
+include ../../general/data/__data.pug
+
+mixin menu
+    .menu
+        - for (var i = 0; i< worksItems.length-1; i++)
+            a(href="#").menu_item= menuItems[i]

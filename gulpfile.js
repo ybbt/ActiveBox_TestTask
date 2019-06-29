@@ -78,14 +78,14 @@ gulp.task('img', function () {
 
 });
 
-gulp.task('video', function () {
-    return gulp.src(['./dev/video/*.*'])
-        .pipe(plumber({
-            errorHandler: notify.onError()
-        }))
-        .pipe(gulp.dest('./test_build/video/'))
+// gulp.task('video', function () {
+//     return gulp.src(['./dev/video/*.*'])
+//         .pipe(plumber({
+//             errorHandler: notify.onError()
+//         }))
+//         .pipe(gulp.dest('./test_build/video/'))
 
-});
+// });
 
 gulp.task('fonts', function () {
     return gulp.src(['./dev/fonts/*.*'])
@@ -108,8 +108,8 @@ gulp.task('watch', function () {
     gulp.watch('./dev/**/*.less', gulp.series(['less']));
     gulp.watch('./dev/**/*.pug', gulp.series(['pug']));
     gulp.watch('./dev/**/*.js', gulp.series(['js']));
-    gulp.watch('./dev/img/', gulp.series(['dirClean', 'webp', 'img']));
-    gulp.watch('./dev/video/', gulp.series(['dirCleanVideo', 'video']));
+    gulp.watch('./dev/img/', gulp.series(['dirClean', 'webp'/* , 'img' */]));
+    // gulp.watch('./dev/video/', gulp.series(['dirCleanVideo', 'video']));
     gulp.watch('./dev/fonts/', gulp.series(['dirCleanFonts', 'fonts']));
 }); //остановить таск - ctrl+C
 

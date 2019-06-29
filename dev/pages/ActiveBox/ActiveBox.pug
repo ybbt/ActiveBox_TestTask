@@ -1,3 +1,12 @@
+include ../../general/data/__data.pug
+include ../../bem/menu/__menu.pug
+include ../../bem/button/__button.pug
+include ../../bem/team-item/__team-item.pug
+include ../../bem/works-item/__works-item.pug
+include ../../bem/footer-item/__footer-item.pug
+include ../../bem/social/__social.pug
+include ../../bem/svg/__svg.pug
+
 doctype html
 html(lang='en')
     head
@@ -6,143 +15,79 @@ html(lang='en')
         title ActiveBox
         link(rel="icon" type="image/png" href="favicon.png" sizes="16x16")
         link(rel="shortcut icon" type="image/x-icon" href="favicon.ico")
-        
-            
+
         link(rel= "stylesheet" href="css/normalize.css")
         link(rel= "stylesheet" href="css/index.css")
 
         //- link(href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet")
 
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
-        
+
     body
+        //- block
         header.header
             .header_navigation
-                .header_logo
-                .menu
-                    a(href="#").menu_item features
-                    a(href="#").menu_item works
-                    a(href="#").menu_item our team
-                    a(href="#").menu_item testimonials
-                    a(href="#").menu_item download
-            h1.header_title Your Favorite One Page Multi Purpose Template
-            h2.header_subtitle Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit culpa, repudiandae quaerat est nemo possimus cum aliquam!
-            button.button#btnFndOutMore Find Out More
+                img(src="img/ActiveBox.webp", alt="").header_logo
+                //- block
+                +menu()
+            .header_main
+                h1.header_title Your Favorite One Page Multi Purpose Template
+                h2.header_subtitle Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit culpa, repudiandae quaerat est nemo possimus cum aliquam!
+                .header_button
+                    //- block
+                    +button("Find Out More", "btnFndOutMore")
+        //- block
         main.main
-            section.features#features
+            section.main_loyout.main_loyout__features#features
                 template#templateFeatures
-                    .features-item._root
-                        img(src="", alt="").features-item_img._insImg
-                        h1.features-item_title._insTitle Easily Customised
-                        .features-item_descript Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla.
+                    .main_loyout-item.main_loyout-item__features
+                        //- block
+                        .features-item._root
+                            .features-item_head
+                                img(src="", alt="").features-item_img._insImg
+                                h1.features-item_title._insTitle
+                                //- доробити вставку елементу з описом
+                            .features-item_descript
+                                |Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo.
 
-            section.works
-                .works-item
-                    img(src="img/Layer 35.webp", alt="").works-item_img
-                .works-item
-                    img(src="img/Layer 35.webp", alt="").works-item_img
-                .works-item
-                    img(src="img/Layer 35.webp", alt="").works-item_img
-                .works-item
-                    img(src="img/Layer 35.webp", alt="").works-item_img
-                .works-item
-                    img(src="img/Layer 35.webp", alt="").works-item_img
-                .works-item
-                    img(src="img/Layer 35.webp", alt="").works-item_img
-                .works-item
-                    img(src="img/Layer 35.webp", alt="").works-item_img
-                .works-item
-                    img(src="img/Layer 35.webp", alt="").works-item_img
-            section.team
-                .team-item
-                    img(src="img/Layer 30.webp", alt="").team-item_img
-                    h1.team-item_name Ruth Woods
-                    h2.team-item_position Founder, CEO
-                    .team-item_discript Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo.
-                    .social
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico">
-                            <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico">
-                            <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico">
-                            <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                        </svg>
-                .team-item
-                    img(src="img/Layer 30.webp", alt="").team-item_img
-                    h1.team-item_name Ruth Woods
-                    h2.team-item_position Founder, CEO
-                    .team-item_discript Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo.
-                    .social
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico">
-                            <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico">
-                            <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico">
-                            <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                        </svg>
-                .team-item
-                    img(src="img/Layer 30.webp", alt="").team-item_img
-                    h1.team-item_name Ruth Woods
-                    h2.team-item_position Founder, CEO
-                    .team-item_discript Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo.
-                    .social
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico">
-                            <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico">
-                            <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico">
-                            <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                        </svg>
-                .team-item
-                    img(src="img/Layer 30.webp", alt="").team-item_img
-                    h1.team-item_name Ruth Woods
-                    h2.team-item_position Founder, CEO
-                    .team-item_discript Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo.
-                    .social
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico">
-                            <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico">
-                            <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico">
-                            <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                        </svg>
-            section.clients
+            section.main_loyout.main_loyout__works
+                - for (var i = 0; i< worksItems.length; i++)
+                    .main_loyout-item.main_loyout-item__works
+                        //- block
+                        +worksItem(worksItems[i])
+            section.main_loyout.main_loyout__team
+                - for (var i = 0; i< teamItems.length; i++)
+                    .main_loyout-item.main_loyout-item__team
+                        //- block
+                        +teamItem(teamItems[i])
+            section.main_loyout.main_loyout__clients
                 //- має бути слайдер
-            section.download
-                h1.header_title Are You Ready to Start? Download Now For Free!
-                h2.header_subtitle Fusce dapibus, tellus ac cursus commodo
-                button.button Download Here
+            section.main_loyout.main_loyout__download
+                h1.main_download-title Are You Ready to Start? Download Now For Free!
+                h2.main_download-subtitle Fusce dapibus, tellus ac cursus commodo
+                .main_button
+                    //- block
+                    +button("Download Here")
+        //- block
         footer.footer
-            .footer-main
-                .footer-item
-                    .footer-item_content 3481 Melrose Place Beverly Hills, CA 90210
-                .footer-item
-                    .footer-item_content
-                        .social
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico social_ico__footer-color">
-                                <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico social_ico__footer-color">
-                                <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0.222in" height="0.222in" class="social_ico social_ico__footer-color">
-                                <path fill-rule="evenodd"  fill="rgb(198, 202, 204)" d="M14.817,16.000 L1.182,16.000 C0.529,16.000 -0.000,15.486 -0.000,14.854 L-0.000,1.146 C-0.000,0.513 0.529,-0.000 1.182,-0.000 L14.817,-0.000 C15.471,-0.000 16.000,0.513 16.000,1.146 L16.000,14.854 C16.000,15.486 15.471,16.000 14.817,16.000 ZM2.433,13.393 L4.850,13.393 L4.850,6.169 L2.433,6.169 L2.433,13.393 ZM3.657,2.686 C2.831,2.686 2.290,3.225 2.290,3.934 C2.290,4.628 2.815,5.182 3.626,5.182 L3.642,5.182 C4.484,5.182 5.009,4.628 5.009,3.934 C4.993,3.225 4.484,2.686 3.657,2.686 ZM13.564,9.251 C13.564,7.032 12.372,5.999 10.782,5.999 C9.499,5.999 8.925,6.700 8.604,7.192 L8.604,6.169 L6.187,6.169 C6.219,6.846 6.187,13.393 6.187,13.393 L8.604,13.393 L8.604,9.359 C8.604,9.143 8.619,8.927 8.683,8.773 C8.858,8.341 9.256,7.895 9.923,7.895 C10.798,7.895 11.147,8.557 11.147,9.528 L11.147,13.393 L13.564,13.393 L13.564,9.251 ZM8.588,7.217 C8.593,7.208 8.599,7.200 8.604,7.192 L8.604,7.217 L8.588,7.217 Z"/>
-                            </svg>
-                .footer-item
-                    .footer-item_content Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ullamcorper nulla non metus auctor fringilla.
-            .footer-botom
-                .footer-botom_content
-                    p Copyright © 2015 ActiveBox. All Rights Reserved
-                    p 
-                        |Made with 
-                        span.footer-botom_text__ico-red Y 
-                        span.footer-botom_text__white by Kamal Chaneman
+            .footer_main
+                .footer_main-item
+                    //- block
+                    +footerItem(footerItems[0])
+                .footer_main-item.footer_main-item__center
+                    //- block
+                    .footer-item
+                        .footer-item_title share with love
+                        .footer-item_content
+                        //- переробити передачу модифікатора
+                        //- block
+                        +social("footer-color")
+                .footer_main-item
+                    //- block
+                    +footerItem(footerItems[1])
+            .footer_bottom
+                p.footer_bottom-content Copyright © 2015 ActiveBox. All Rights Reserved Made with
+                    span.footer_bottom-text.footer_bottom-text__ico-red Y
+                    span.footer_bottom-text.footer_bottom-text__white by Kamal Chaneman
+        +socialSVG("display:none")
         script(type="text/javascript" src="js/index.js")

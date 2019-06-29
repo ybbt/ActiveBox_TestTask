@@ -15,30 +15,31 @@ class Events {
 
 }
 
+class ApiService {
+    static callApi(url, method) {
+
+        const options = {
+            method,
+        };
+
+        return fetch(url, options)
+            .then(response =>
+                response.ok ? response.json() : Promise.reject(Error('Failed to load'))
+            )
+            .catch(error => {
+                throw error;
+            });
+    }
+}
+
 class CollectionService {
 
     API_URL = 'https://jsonplaceholder.typicode.com/photos';
 
-    callApi(method) {
-
-    const options = {
-        method,
-    };
-
-    return fetch(/*url*/this.API_URL, options)
-        .then(response =>
-            response.ok ? response.json() : Promise.reject(Error('Failed to load'))
-        )
-        .catch(error => {
-            throw error;
-        });
-    }
-
     async getCollection() {
 
         try {
-
-            /*const apiResult =*/return await this.callApi('GET');
+            return await ApiService.callApi(this.API_URL, 'GET');
 
         } catch (error) {
             throw error;
@@ -129,7 +130,7 @@ class Features {
         const tmpList =  await collectionService.getCollection();
 
         const listRandom = [];
-        for (let index = 0; index < 5; index++) {
+        for (let index = 0; index < this.#model.list.length; index++) {
             listRandom.push(tmpList[Math.floor(Math.random() * tmpList.length)]);
         }
 
