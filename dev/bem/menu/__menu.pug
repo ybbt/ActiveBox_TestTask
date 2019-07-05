@@ -1,6 +1,4 @@
-include ../../general/data/__data.pug
-
-mixin menu
+mixin menu(menuItems)
     .menu
-        - for (var i = 0; i< worksItems.length-1; i++)
-            a(href="#").menu_item= menuItems[i]
+        - for (var i = 0; i< menuItems.length; i++)
+            a(href="#" data-dest=menuItems[i].dataDest).menu_item._menuScroll= menuItems[i].name

@@ -3,10 +3,19 @@
     font-family: @fontFamilyRaleway;
     font-weight: bold;
 
+    @media (max-width: 780px) {
+
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    @media (max-width: 585px) {
+        max-width: 250px;
+    }
+
     &_item {
         color: @colorHeader;
         text-decoration: none;
-        // font-family: @fontFamiliProximaNovaSemibold;
         font-size: 13px;
         text-transform: uppercase;
 
@@ -16,6 +25,10 @@
 
         &:last-of-type{
             margin-right: 0px;
+        }
+
+        @media (max-width: 780px) {
+            margin: 5px 5px;
         }
     }
 }

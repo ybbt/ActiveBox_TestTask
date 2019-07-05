@@ -6,10 +6,19 @@
     display: flex;
     flex-direction: column;
     color: @colorHeader;
+    
+    @media (max-width: 1170px) {
+        min-width: 585px;
+        justify-content: space-around;
+    }
+
+    @media (max-width: 585px) {
+        min-width: 0;
+    }
 
     &::before {
         content: "";
-        background-image: url('../img/Layer 34.webp') ;
+        background-image: url('../img/Layer 34.jpg') ;
         background-size: cover;
         position: absolute;
         opacity: 1;
@@ -21,19 +30,35 @@
 
     &_navigation{
         z-index: 100;
-        //color: white;
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: @widthMain;
         height: 100px;
-        // min-height: 54px;
-        // position: absolute;
-        // top: 53px;
+        
         left: 0; 
         right: 0; 
         margin-left: auto; 
         margin-right: auto; 
+
+        @media (max-width: 1170px){
+            flex-direction: column;
+            width: calc(100% - 20px);
+            padding: 10px 10px;
+            
+        }
+    }
+
+    &_logo{
+        @media (max-width: 1170px) {
+            align-self: flex-start;
+        }
+    }
+
+    &_menu{
+        @media (max-width: 1170px) {
+            align-self: center;
+        }
     }
 
     &_main{
@@ -46,6 +71,11 @@
         margin-bottom: auto;
         margin-left: auto; 
         margin-right: auto; 
+
+        @media (max-width: 970px) {
+            width: calc(100% - 20px);
+            justify-content: center;
+        }
     }
 
     &_title{
@@ -57,6 +87,19 @@
         text-align: center;
         margin-top: 0;
         margin-bottom: 40px;
+
+        
+        @media (max-width: 970px)  and (orientation: landscape) {
+            font-size: 5vw;
+            line-height: 5vw;
+            margin-bottom: 4vh;
+        }
+
+         @media (max-width: 970px)  and (orientation: portrait) {
+            font-size: 4vh;
+            line-height: 4vh;
+            margin-bottom: 4vh;
+        }
     }
 
     &_subtitle{
@@ -65,10 +108,26 @@
         text-align: center;
         margin-top: 0;
         margin-bottom: 80px;
+
+        @media (max-width: 970px)  and (orientation: landscape) {
+            font-size: 3vw;
+            line-height: 3vw;
+            margin-bottom: 5vh;
+        }
+
+        @media (max-width: 970px)  and (orientation: portrait) {
+            font-size: 2vh;
+            line-height: 3vh;
+            margin-bottom: 5vh;
+        }
     }
 
     &_button{
         width: 200px;
         height: @btnHeight;
+
+        @media (max-width: 585px) {
+            width: calc(100% - 40px);
+        }
     }
 }

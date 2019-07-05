@@ -8,22 +8,48 @@
         display: flex;
         flex-wrap: wrap;
 
+        @media (max-width: 1170px) {
+            width: 100%;
+        }
+
         &__features{
             // display: flex;            
             justify-content: space-between;
             padding-top: 50px;
             padding-bottom: 125px;
+
+            @media (max-width: 1170px){                
+                max-width: 780px;
+                width: 100%;
+            }
+
+            @media (max-width: 780px){
+                justify-content: center;
+            }
         }
 
         &__works{
             width: 100%;
             min-width: @widthMain;
+
+            @media (max-width: 1170px) {
+                min-width: 0; 
+            }
         }
 
         &__team{
             margin-top: 100px;
             margin-bottom: 100px;
             justify-content: space-between;
+
+            @media (max-width: 1170px){
+                max-width: 585px
+            }
+
+            @media (max-width: 585px){
+                max-width: 100%;
+                justify-content: center;
+            }
         }
 
         &__download{
@@ -36,6 +62,11 @@
             background-color: @colorClients;
             width: 100%;
             min-width: 1330px;
+            overflow: hidden;
+
+            @media (max-width: 1330px) {
+                min-width: 0;
+            }
         }
     }
 
@@ -47,17 +78,33 @@
 
         &__works{
             width: calc(100% / 4);
+
+            @media (max-width: 780px) {
+                width: calc(100% / 2);
+            }
+            
         }
 
         &__team{
             width: 270px;
+
+            @media (max-width: 1330px) {
+                margin: 10px;              
+            }
+
+            // @media (max-width: 585px){
+            //     margin: 10px;  
+            // }
         }
+
+
     }
 
     &_download-title{
         font-size: 28px;
         margin-top: 0;
         margin-bottom: 15px;
+        text-align: center;
     }
 
     &_download-subtitle{
@@ -69,5 +116,9 @@
     &_button{
         width: 280px;
         height: @btnHeight;
+
+        @media (max-width: 585px) {
+            width: calc(100% - 40px);
+        }
     }
 }
